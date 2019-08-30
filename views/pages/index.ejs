@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <% include ../partials/head %>
+  </head>
+  <body>
+  	<% include ../partials/header%>
+  	<br/>
+  	<br/>
+    <div class="container">
+		<form action='/employee/create' method='POST'>
+		  <div class="form-group">
+		    <label>NAME</label>
+		    <input type="text" name="name" class="form-control"  placeholder="Enter Your Name">
+		  </div>
+		   <div class="form-group">
+		    <label>AGE</label>
+		    <input type="Number" name="age" class="form-control"  placeholder="Enter Your Age">
+		  </div>
+		   <div class="form-group">
+		    <label>LOCATION</label>
+		    <input type="text" name="location" class="form-control"  placeholder="Enter Your Location">
+		  </div>
+		  <div class="form-group">
+		    <label>EMAIL</label>
+		    <input type="email" name="email" class="form-control"  placeholder="Enter Your Email">
+		  </div>
+		  <button type="submit" class="btn btn-primary">Add</button>
+		</form>
+
+		<br/>
+		<br/>
+		<h2 style="text-align: center;">Employees</h2>
+		<br/>
+		<br/>
+		<ul>
+			<% for(var i=0;i<employees.length;i++){ %>
+				<li>
+					<div class="card">
+		   			  <div class="card-body">
+		   			  	<div class="row">
+		   			  		<div class="col-md-6">
+							   Name: <h5 class="card-title"><%=employees[i].name%></h5>
+   							   Age: <h5 class="card-title"><%=employees[i].age%></h5>
+							   Location: <h5 class="card-title"><%=employees[i].location%></h5>
+							   Email: <p class="card-text"><%=employees[i].email%></p>
+							   Joined On:<p class="card-text"><%=employees[i].joined%></p>  
+		   			  		</div>
+		   			  		<div class="col-md-6">
+		   			  			<a class="btn btn-raised btn-success" href="/employee/<%= employees[i]._id %>">View</a></td>
+		   			  			<a class="btn btn-raised btn-secondary" href="/employee/<%= employees[i]._id %>/update1">Update</a></td> 
+		   			  			<a class="btn btn-raised btn-danger" href="/employee/<%= employees[i]._id %>/delete">Delete</a></td>  
+		   			  		</div>
+		   			  	</div>	
+
+					  </div>
+					</div>
+				</li>
+			<% } %>
+		</ul>
+    </div>
+    <% include ../partials/footer %>
+  </body>
+</html>
